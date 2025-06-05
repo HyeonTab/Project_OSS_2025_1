@@ -3,7 +3,7 @@ from budget import Budget
 
 def main():
     budget = Budget()
-
+    budget.file_read()
     while True:
         print("==== 간단 가계부 ====")
         print("1. 지출 추가")
