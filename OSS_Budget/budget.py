@@ -12,7 +12,7 @@ class Budget:
         # 지출 추가 할때마다 expenses.txt 파일에도 추가
         # expenses.txt 파일이 존재하지 않으면 새로 생성함
         with open(filename, "a", encoding="utf-8") as f:
-                f.write(f"{expense.date}, {expense.category}, {expense.description}, {expense.amount}\n") #tab으로 구분하여 저장
+                f.write(f"{expense.date}, {expense.category}, {expense.description}, {expense.amount}\n") #쉼표로 구분하여 저장
         print("지출이 추가되었습니다.\n")
 
     def list_expenses(self):
