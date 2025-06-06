@@ -24,4 +24,28 @@ class Budget:
         total = sum(e.amount for e in self.expenses)
         print(f"총 지출: {total}원\n")
 
+    # 전체 지출에 대한 카테고리별 지출액 및 비율을 보여주는 함수
+    def category_total_chart(self):
+        if not self.expenses:
+            print("지출 내역이 없습니다.\n")
+            return
+        # 카테고리별 지출액 저장
+        summary = {}
+        for e in self.expenses:
+            # summary에 해당 카테고리가 있으면 그 지출액에 더함
+            if e.category in summary:
+                summary[e.category] += e.amount
+            # summary에 해당 카테고리가 없으면 새로 만듬
+            else:
+                summary[e.category] = e.amount
+        
+        bar_width = 20
+        total = sum(e.amount for e in self.expenses)
 
+        print("[카테고리별 지출액 및 비율]")
+        for category, amount in summary.items():
+            bar_len = int((amount / total) * bar_width)
+            expense_rate = amount / total * 100
+            bar = "█" * bar_len
+            print(f"{category}\t: {bar.ljust(bar_width)}{expense_rate:.1f}%\t{amount}원")
+        print()
